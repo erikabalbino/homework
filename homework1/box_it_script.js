@@ -44,5 +44,6 @@ function boxIt(array) {
 // console.log(drawMiddleBorder(0));
 // console.log(drawBottomBorder(0));
 // console.log(drawBarsAround('Erika'));
-console.log(boxIt(['Maria Eliza', 'Erika Balbino', 'Junior']));
+// console.log(boxIt(['Maria Eliza', 'Erika Balbino', 'Junior']));
+console.log(boxIt(['Erika Balbino']));
 // console.log(boxIt([]));

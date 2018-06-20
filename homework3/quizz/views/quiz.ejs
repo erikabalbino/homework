@@ -1,0 +1,18 @@
+<%- include("./partials/header") %>
+  <body>
+    <h1>Hi <%= cookie_name %> </h1>
+    <form action="/quiz" method="POST">
+
+        <div class="form-group">
+            <label for="title">My questions</label>
+            <input
+            type="text"
+            class="form-control"
+            name="name"
+            />
+        </div>
+
+        <input type="submit" class="btn btn-outline-primary" value="Submit">
+    </form>
+
+<%- include("./partials/footer") %>

@@ -19,18 +19,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use((req, res, next) => {
-  console.log("Cookies:", req.cookies);
-  const name = req.cookies.name;
-  res.locals.bla = ""; 
+// app.use((req, res, next) => {
+//   console.log("Cookies:", req.cookies);
+//   const name = req.cookies.name;
+//   res.locals.bla = ""; 
 
-  if (name){
-      res.locals.cookie_name = name;
-      console.log(`😍 User's name is ${name}`);
-  }
+//   if (name){
+//       res.locals.cookie_name = name;
+//       console.log(`😍 User's name is ${name}`);
+//   }
 
-  next();
-})
+//   next();
+// })
 
 app.use('/', indexRouter);
 // app.use('/users', usersRouter);

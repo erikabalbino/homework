@@ -1,15 +1,51 @@
 <%- include("./partials/header") %>
   <body>
-    <h1>Hi <%= cookie_name %> </h1>
+    <h1>Hi <%= myName %> </h1>
     <form action="/quiz" method="POST">
+        <h2>Javascript</h2>
 
-        <div class="form-group">
-            <label for="title">My questions</label>
-            <input
-            type="text"
-            class="form-control"
-            name="name"
-            />
+        <div class="form-group mb-4 ">
+            <label for="title">1 - What does `[] == 0` return?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="question1" id="exampleRadios1" value="1">
+                <label class="form-check-label" for="exampleRadios1">
+                True
+                </label>
+            </div>    
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="question1" id="exampleRadios2" value="2">
+                <label class="form-check-label" for="exampleRadios2">
+                False
+                </label>
+            </div>    
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="title">2 - What was the original name on JavaScript?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="question2" id="exampleRadios3" value="1">
+                <label class="form-check-label" for="exampleRadios3">
+                Java
+                </label>
+            </div>    
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="question2" id="exampleRadios4" value="2">
+                <label class="form-check-label" for="exampleRadios4">
+                Mocha
+                </label>
+            </div>    
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="question2" id="exampleRadios5" value="3">
+                <label class="form-check-label" for="exampleRadios5">
+                LiveScript
+                </label>
+            </div>    
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="question2" id="exampleRadios6" value="4">
+                <label class="form-check-label" for="exampleRadios6">
+                ECMAScript
+                </label>
+            </div>    
         </div>
 
         <input type="submit" class="btn btn-outline-primary" value="Submit">

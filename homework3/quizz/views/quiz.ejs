@@ -1,8 +1,8 @@
 <%- include("./partials/header") %>
   <body>
-    <h1>Hi <%= myName %> </h1>
+    <h1 mb>Hi <%= myName %>! Let's start the quiz! </h1>
     <form action="/quiz" method="POST">
-        <h2>Javascript</h2>
+        <h2 style = "margin-top: 20px">Javascript</h2>
 
         <div class="form-group mb-4 ">
             <label for="title">1 - What does `[] == 0` return?</label>
@@ -48,7 +48,64 @@
             </div>    
         </div>
 
+        <div class="form-group mb-4">
+            <label for="title">3 - What are JavaScript Data Types?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="question3" value="1" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                Number
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="question3" value="2" id="defaultCheck2">
+                <label class="form-check-label" for="defaultCheck2">
+                Boolean
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="question3" value="3" id="defaultCheck3">
+                <label class="form-check-label" for="defaultCheck3">
+                Hash
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="question3" value="4" id="defaultCheck4">
+                <label class="form-check-label" for="defaultCheck4">
+                Array
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="title">4 - Which symbol is used for comments in Javascript??</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="question4" value="1" id="defaultCheck5">
+                <label class="form-check-label" for="defaultCheck5">
+                /*   Multi Line Comment */
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="question4" value="2" id="defaultCheck6">
+                <label class="form-check-label" for="defaultCheck6">
+                # for Single line comments
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="question4" value="3" id="defaultCheck7">
+                <label class="form-check-label" for="defaultCheck7">
+                = begin Multi Line Comment =end
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="question4" value="4" id="defaultCheck8">
+                <label class="form-check-label" for="defaultCheck8">
+                // for Single line comments
+                </label>
+            </div>
+        </div>
+
         <input type="submit" class="btn btn-outline-primary" value="Submit">
     </form>
 
 <%- include("./partials/footer") %>
+

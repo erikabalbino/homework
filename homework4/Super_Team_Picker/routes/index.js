@@ -30,8 +30,15 @@ router.post('/new', (req, res) => {
 })
 
 router.get('/index', (req, res) => {
-  // res.send("")
-  res.render('index')
+  knex
+  .select("*")
+  .orderBy('createdAt', 'desc')
+  .from("cohorts")
+  .then(cohorts => {
+      res.render("index", { allCohorts: cohorts });
+      // res.json(cohorts);
+  });
+
 })
 
 router.get('/:id', (req, res) => {

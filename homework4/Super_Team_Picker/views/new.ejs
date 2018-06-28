@@ -1,6 +1,6 @@
 <%- include("./partials/header") %>
 
-    <form action="/new" method="POST">
+    <form action="/cohorts/new" method="POST">
 
         <div class="form-group">
             <label for="logoUrl" style="color: black">Logo Url</label>
@@ -9,6 +9,7 @@
             class="form-control"
             name="logoUrl"
             placeholder="e.g. https://www.example.com/some.jpg"
+            required
             />
         </div>
 
@@ -20,6 +21,7 @@
             name="name"
             placeholder="Flying Funks"
             color="lightgrey"
+            required
             />
         </div>
 
@@ -29,7 +31,9 @@
             name="members"
             cols="60" rows="8"
             class="form-control"
-            placeholder="Jonh Snow, Daenerys, Melisandre, Arya Stark"></textarea>
+            placeholder="Jonh Snow, Daenerys, Melisandre, Arya Stark"
+            required
+            ></textarea>
         </div>
 
         <div class="d-flex flex-row-reverse" >

@@ -19,6 +19,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/cohorts', indexRouter);
+//this means: add string `/cohorts` before ALL urls defined in indexRouter
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

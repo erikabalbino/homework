@@ -42,15 +42,21 @@ router.get('/index', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
+  const opt = req.query.method1;
+  const qty = parseInt(req.query.quantity);
+  
   knex
   .select("*")
   .from("cohorts")
   .where({ id: req.params.id }) 
   .then(results => {
-  const [cohort] = results;
-  // res.send(cohort);
-  res.render("cohort", { cohort: cohort });
+    const [cohort] = results;
+    // res.send(cohort);
+    res.render("cohort", { cohort: cohort });
+    console.log(cohort, opt, qty);
   });
+
+
 
 })
 

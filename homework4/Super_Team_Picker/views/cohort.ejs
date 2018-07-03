@@ -1,6 +1,6 @@
 <%- include("./partials/header") %>
 
-    <form style="border: 1px solid lightgrey; padding: 19px;" action="/quiz" method="POST">
+    <form style="border: 1px solid lightgrey; padding: 19px;" action="" method="GET">
 
         <h2 class=""> <%= cohort.name %> </h2>
         
@@ -26,7 +26,7 @@
 
         <div class="form-group mb-4 ">
             <label for="quantity">Quantity</label>
-            <textarea class="form-control" id="quantity" rows="1"></textarea>
+            <textarea class="form-control" name="quantity" rows="1"></textarea>
         </div>
 
         <input type="submit" style="padding: 5px;" class="btn btn-outline-primary btn-lg btn-block" value="Assign Team">

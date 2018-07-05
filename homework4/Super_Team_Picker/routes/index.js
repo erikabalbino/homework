@@ -72,15 +72,10 @@ router.get('/:id', (req, res) => {
         while(members_arr.length) {new_team.push(members_arr.splice(0,qty))}
     } else {
         let new_length = Math.ceil(members_arr.length / qty)
-        // console.log(new_length)
-        // console.log(qty)
-        // console.log(members_arr.length)
-        // console.log(members_arr)
         for(let j= 0; j < members_arr.length; j+=new_length){
           console.log(j);
           new_team.push(members_arr.slice(j, j + new_length));
         }
-        // while(new_length <= members_arr.length) { new_team.push(members_arr.splice(0,new_length)) }
     }
 
     // res.send(cohort);

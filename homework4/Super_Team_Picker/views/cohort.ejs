@@ -11,13 +11,21 @@
         <div class="form-group mb-4 ">
             <label>Method</label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="method1" id="exampleRadios1" value="1">
+                <input class="form-check-input" type="radio" name="method1" id="exampleRadios1" value="1"
+                    <% if (opt == 1) { %>
+                        checked
+                    <% } %>
+                >
                 <label class="form-check-label" for="exampleRadios1">
                 Team Count
                 </label>
             </div>    
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="method1" id="exampleRadios2" value="2">
+                <input class="form-check-input" type="radio" name="method1" id="exampleRadios2" value="2"
+                    <% if (opt == 2) {%>
+                        checked
+                    <% } %>
+                >
                 <label class="form-check-label" for="exampleRadios2">
                 Number Per Team
                 </label>
@@ -26,11 +34,27 @@
 
         <div class="form-group mb-4 ">
             <label for="quantity">Quantity</label>
-            <textarea class="form-control" name="quantity" rows="1"></textarea>
+            <input class="form-control" name="quantity" rows="1"
+                <% if (qty){ %>
+                    value = "<%= qty %>"
+                <% } %>
+            >
         </div>
 
         <input type="submit" style="padding: 5px;" class="btn btn-outline-primary btn-lg btn-block" value="Assign Team">
 
+        <div>
+            <% if (qty) { %>
+                <h3 class=""> # Members</h3>
+                <hr>
+                <% for (let i = 0; i <  new_team.length; i++) {%>
+                    <p><span class="number ml-3 mr-3 font-weight-bold"><%= i+1 %></span><%= new_team[i].join(', ') %></p>
+                <hr>
+                <% } %>
+            <% } %>
+        </div>
+
     </form>
+
 
 <%- include("./partials/footer") %>

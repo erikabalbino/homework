@@ -1,0 +1,31 @@
+html {
+    font-family: Helvetica, sans-serif;
+}
+
+* {
+    font-family: inherit
+}
+
+body {
+
+}
+
+.post {
+    margin-bottom: 10px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.yield {
+    padding: 10px;
+}
+
+
+
+input,
+textarea,
+select,
+option {
+    font-size: inherit;
+}

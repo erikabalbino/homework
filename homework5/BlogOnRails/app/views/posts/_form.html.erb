@@ -1,0 +1,19 @@
+<%= form_for(@post) do |f| %>
+
+    <% if @post.errors.present? %>
+        <%= @post.errors.full_messages.join(',') %>
+    <% end %>
+
+    <div class="form-group title text-dark">
+        <%= f.label(:title) %>
+        <%= f.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="form-group title text-dark">
+        <%= f.label(:body) %>
+        <%= f.text_area :body, class: "form-control" %>
+    </div>
+
+    <%= f.submit class: "btn btn-outline-primary" %>
+
+<% end %>

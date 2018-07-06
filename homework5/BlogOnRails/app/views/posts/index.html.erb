@@ -1,0 +1,17 @@
+<h1  class="mb-4"> ✧ ✧ All Posts ✧ ✧ </h1>
+<div class="row">
+    <% @posts.each do |post| %>
+        <div class="col-sm-6 col-lg-4">
+            <div class="card mb-2">
+                <div class="card-body">
+                    <%= link_to(
+                    post.title.truncate(20),
+                    post_path(post.id),
+                    ) %>
+                    <br />
+                    <p class="card-text"><%= post.body.truncate(40) %></p>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

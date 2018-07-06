@@ -1,17 +1,19 @@
 class Post < ApplicationRecord
 
+    has_many :comments, dependent: :destroy
+
     validates(:title, presence: true, uniqueness: true)
 
     validates(
         :body, 
-        present: true,
+        presence: true,
         length: {
             minimum: 50
         })
 
     before_validation :set_default_title
-    private
 
+    private
     def set_default_title
 
         self.title = self.title.capitalize

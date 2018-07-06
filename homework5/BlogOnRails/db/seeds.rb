@@ -6,22 +6,29 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Post.destroy_all
+Comment.delete_all
+Post.delete_all
 
 50.times do
-
     p = Post.create(
-
         title: Faker::Book.title,
-
         body: Faker::Lorem.paragraph(2, true)
-
     )
+    if p.valid?
+        rand(0..5).times do
+            Comment.create(
+                body: Faker::Matz.quote,
+                post: p
+            )
+        end
+    end
 
 end
 
 
 
 posts = Post.all
+comments = Comment.all
 
 puts Cowsay.say "Created #{posts.count} posts", :cow
+puts Cowsay.say "Created #{comments.count} comments", :tux

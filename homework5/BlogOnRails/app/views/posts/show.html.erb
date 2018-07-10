@@ -4,6 +4,9 @@
 
 <p> <%= @post.body %> </p>
 
+<p>By <%= @post.user&.full_name %> </p>
+
+
 <div> 
     <small>
         Posted <%= time_ago_in_words(@post.created_at) %> ago
@@ -54,7 +57,13 @@
 
 <div class="mt-3">
     <% @comments.each do |comment| %>
+
+        <strong> 
+            <%=  comment.user&.full_name%>
+        </strong> commented: <br />
+
         <%= comment.body %> <br/>
+
         <small>
             Commented <%= time_ago_in_words(comment.created_at) %> ago • 
         </small>

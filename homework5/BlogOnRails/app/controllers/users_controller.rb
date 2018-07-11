@@ -23,7 +23,8 @@ class UsersController < ApplicationController
     def update
         # render json: params
 
-        if current_user.update_attributes(params.require(:user).permit(:first_name, :email))
+        # if current_user.update_attributes(params.require(:user).permit(:first_name, :email))
+        if current_user.update(user_params)
             redirect_to posts_path
         else
             render :edit

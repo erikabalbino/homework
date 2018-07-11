@@ -31,7 +31,10 @@
 
             <% if user_signed_in? %>
               
-              <span style="color: blue; margin-left: 15px;">✧Hi, <%= current_user.first_name %>✧</span>
+              <span style="color: blue; margin-left: 15px;">✧Hi, 
+              <%= link_to(current_user.first_name, edit_user_path(current_user.id))%>
+              ✧
+              </span>
               
               <a class="nav-link" style="color: blue"><%= link_to('Sign_Out', session_path, method: :delete)%></a>
             <% else %>

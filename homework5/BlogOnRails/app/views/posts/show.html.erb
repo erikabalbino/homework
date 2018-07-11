@@ -16,24 +16,31 @@
 
 <br />
 
-<div>
+<% if user_signed_in? %>
+    <div>
+        <% if can?(:edit, @post) %>
+            <button type="button" class="btn btn-outline-primary">
+                <%= link_to "Edit", edit_post_path(@post) %>
+            </buttom>
+        <% end %>
 
-    <button type="button" class="btn btn-outline-primary">
-        <%= link_to "Edit", edit_post_path(@post) %>
-    </buttom>
+        <% if can?(:delete, @post) %>
+            <button type="button" class="btn btn-outline-primary ml-2">
+            <%= link_to(
+                "Delete",
+                post_path(@post),
+                method: :delete,
+                data: {
+                    confirm: "Are you sure?"
+                    }
+            ) %>
+            </buttom>
+        <% end %>
+    </div>
+<% end %>
 
-    <button type="button" class="btn btn-outline-primary ml-2">
-    <%= link_to(
-        "Delete",
-        post_path(@post),
-        method: :delete,
-        data: {
-            confirm: "Are you sure?"
-            }
-    ) %>
-    </buttom>
-</div>
 <br />
+
 <h2> ✧ Comments ✧ </h2>
 
 <%= form_for [@post, @comment] do |f| %>
@@ -67,16 +74,18 @@
         <small>
             Commented <%= time_ago_in_words(comment.created_at) %> ago • 
         </small>
-        <small>
-            <%= link_to(
-                "Delete",
-                post_comment_path(@post, comment),
-                method: :delete,
-                data:{
-                    confirm: "Are you sure?"
-                }
-                ) %> 
-        </small> 
+        <% if user_signed_in? && can?(:delete, comment) %>
+            <small>
+                <%= link_to(
+                    "Delete",
+                    post_comment_path(@post, comment),
+                    method: :delete,
+                    data:{
+                        confirm: "Are you sure?"
+                    }
+                    ) %> 
+            </small> 
+        <% end %>
         </p>
 
     <% end %>

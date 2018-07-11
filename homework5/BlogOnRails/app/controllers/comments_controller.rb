@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
     before_action :authenticate_user!
+    before_action :authorize_user!, only: [:destroy]
 
     def create
         # render json: params
@@ -30,5 +31,14 @@ class CommentsController < ApplicationController
     private
     def comment_params
         params.require(:comment).permit(:body)
+    end
+
+    def authorize_user!
+        @comment = Comment.find params[:id]
+
+        unless can?(:manage, @comment)
+            flash[:danger] = "Access Denied!"
+            redirect_to post_path(@comment.post)
+        end
     end
 end

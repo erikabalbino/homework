@@ -31,11 +31,52 @@ class UsersController < ApplicationController
         end
         
     end
+
+    def edit_password
+        if user_signed_in?
+            @user = current_user
+        else
+            flash[:danger] = "Access Denied!"
+            redirect_to posts_path
+        end
+    end
+
+
+    def update_password
+
+        if current_user&.authenticate(user_params[:password])
+            if user_params[:password] == user_params[:new_password]
+                flash.now[:alert] = "🔥 Current password equal new password ! 🔥";
+                @user = current_user;
+                render :edit_password
+            else
+                if user_params[:new_password] == user_params[:password_confirmation]
+                    if current_user.update(user_params)
+                #    if current_user.update(user_params[:new_password])
+                        flash[:success] = " 👏 Successfully changed password ! 👏";
+                        redirect_to posts_path
+                   end
+                    # else
+                    #     render :edit_password
+                    
+                else
+                    flash.now[:alert] = "🔥 Wrong password confirmation ! 🔥";
+                    @user = current_user;
+                    render :edit_password
+                end
+            end
+        else
+            flash.now[:alert] = " 🔥 Wrong Current password ! 🔥";
+            @user = current_user;
+            render :edit_password
+        end
+
+    end
     
     private
     def user_params 
         params.require(:user).permit(
-            :first_name, :last_name, :email, :password, :password_confirmation
+            :first_name, :last_name, :email, :password, :new_password, :password_confirmation
         )
     end
     

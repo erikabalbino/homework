@@ -44,21 +44,19 @@ class UsersController < ApplicationController
 
     def update_password
 
-        if current_user&.authenticate(user_params[:password])
+        if current_user.authenticate(user_params[:password])
             if user_params[:password] == user_params[:new_password]
                 flash.now[:alert] = "🔥 Current password equal new password ! 🔥";
                 @user = current_user;
                 render :edit_password
             else
-                if user_params[:new_password] == user_params[:password_confirmation]
-                    if current_user.update(user_params)
-                #    if current_user.update(user_params[:new_password])
+                if user_params[:new_password] === user_params[:password_confirmation] 
+                # if current_user.update(password: user_params[:new_password], password_confirmation: user_params[:password_confirmation])
+                    current_user.password = user_params[:new_password]
+                    current_user.password_confirmation = user_params[:password_confirmation]
+                    current_user.save
                         flash[:success] = " 👏 Successfully changed password ! 👏";
                         redirect_to posts_path
-                   end
-                    # else
-                    #     render :edit_password
-                    
                 else
                     flash.now[:alert] = "🔥 Wrong password confirmation ! 🔥";
                     @user = current_user;

@@ -35,8 +35,9 @@ class CommentsController < ApplicationController
 
     def authorize_user!
         @comment = Comment.find params[:id]
+        @post = Post.find params[:post_id]
 
-        unless can?(:manage, @comment)
+        unless can?(:manage, @comment) || @post&.user_id == current_user&.id
             flash[:danger] = "Access Denied!"
             redirect_to post_path(@comment.post)
         end

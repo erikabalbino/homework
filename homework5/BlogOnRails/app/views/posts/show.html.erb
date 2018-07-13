@@ -74,7 +74,9 @@
         <small>
             Commented <%= time_ago_in_words(comment.created_at) %> ago • 
         </small>
-        <% if user_signed_in? && can?(:delete, comment) %>
+        
+        <% if user_signed_in? && can?(:delete, comment) || @post&.user_id == current_user&.id  %>
+        <%# if @post.user_id == current_user.id  %>
             <small>
                 <%= link_to(
                     "Delete",

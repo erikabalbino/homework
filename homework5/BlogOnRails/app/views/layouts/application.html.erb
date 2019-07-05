@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BlogOnRails</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-sm  navbar-light bg-light mb-2">
+      <a class="navbar-brand" style="color: blue"> 
+          Blog On Rails
+      </a>
+
+      <button class="navbar-toggler"  type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse topnav justify-content-end" id="navbarNavAltMarkup">
+          <div class="navbar-nav mr-2">
+              
+            <a class="nav-link" style="color: blue"><%= link_to('Home', posts_path)%></a>
+            
+            <% if user_signed_in? %>
+              <a class="nav-link" style="color: blue"><%= link_to('New Post', new_post_path)%></a>
+            <% end %>
+
+            <% if user_signed_in? %>
+              
+              <span style="color: blue; margin-left: 15px;">✧Hi, 
+              <%= link_to(current_user.first_name, edit_user_path(current_user.id))%>
+              ✧
+              </span>
+              
+              <a class="nav-link" style="color: blue"><%= link_to('Sign_Out', session_path, method: :delete)%></a>
+            <% else %>
+              <a class="nav-link" style="color: blue"><%= link_to('Sign_In', new_session_path)%></a>
+              
+              <a class="nav-link" style="color: blue"><%= link_to('Sign_Up', new_user_path)%></a>
+            <% end %>
+
+          </div>
+      </div>
+    </nav>
+
+
+    <% flash.each do |type, message| %>
+      <div class="alert alert-<%= type %>" alert-dismissible fade show>
+        <%= message %>
+      </div>
+    <% end %>
+    <div class="yield">
+
+      <%= yield %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+
+<%- include("./partials/header") %>
+
+    <h1>Hi <%= myName%> ! </h1>
+    <h1><%= result.greeting%> </h1>
+    <h2>Your Grade is: <%= result.grade%> </h1>
+    <h2>You scored <%= result.percent%>% and you got <%= result.results%> out of 10 questions</h2>
+
+    <div>
+        <a href="/quiz">Retake the quizz</a>
+    </div>
+
+    <div>
+        <a href="/">Welcome</a>
+    </div>
+
+<%- include("./partials/footer") %>
